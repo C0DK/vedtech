@@ -32,5 +32,6 @@ class DocumentTemplate:
             for template, section in zip(
                 self.sections,
                 document.sections,
+                strict=False,
             )
         )

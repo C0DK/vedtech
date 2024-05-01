@@ -1,9 +1,10 @@
 import pytest
+
 from .document import Document, DocumentTemplate, Section, SectionTemplate
 
 
 @pytest.mark.parametrize(
-    "template,value",
+    ("template", "value"),
     [
         (
             SectionTemplate(title="A", size=1),
@@ -20,7 +21,7 @@ def test_section_template_match(template: SectionTemplate, value: Section):
 
 
 @pytest.mark.parametrize(
-    "template,value",
+    ("template", "value"),
     [
         (
             SectionTemplate(title="A", size=1),
@@ -41,30 +42,30 @@ def test_section_template_does_not_match(template: SectionTemplate, value: Secti
 
 
 @pytest.mark.parametrize(
-    "template,value",
+    ("template", "value"),
     [
         (
             DocumentTemplate(
                 sections=[
                     SectionTemplate(title="A", size=1),
-                ]
+                ],
             ),
             Document(
                 sections=[
                     Section(title="B", size=1, lines=[]),
-                ]
+                ],
             ),
         ),
         (
             DocumentTemplate(
                 sections=[
                     SectionTemplate(title="A", size=1),
-                ]
+                ],
             ),
             Document(
                 sections=[
                     Section(title="A", size=2, lines=[]),
-                ]
+                ],
             ),
         ),
         (
@@ -72,25 +73,25 @@ def test_section_template_does_not_match(template: SectionTemplate, value: Secti
                 sections=[
                     SectionTemplate(title="A", size=1),
                     SectionTemplate(title="B", size=1),
-                ]
+                ],
             ),
             Document(
                 sections=[
                     Section(title="A", size=1, lines=[]),
-                ]
+                ],
             ),
         ),
         (
             DocumentTemplate(
                 sections=[
                     SectionTemplate(title="A", size=1),
-                ]
+                ],
             ),
             Document(
                 sections=[
                     Section(title="A", size=1, lines=[]),
                     Section(title="B", size=2, lines=[]),
-                ]
+                ],
             ),
         ),
         (
@@ -98,13 +99,13 @@ def test_section_template_does_not_match(template: SectionTemplate, value: Secti
                 sections=[
                     SectionTemplate(title="A", size=1),
                     SectionTemplate(title="A", size=1),
-                ]
+                ],
             ),
             Document(
                 sections=[
                     Section(title="A", size=1, lines=[]),
                     Section(title="B", size=2, lines=[]),
-                ]
+                ],
             ),
         ),
     ],
