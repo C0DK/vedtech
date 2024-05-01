@@ -8,6 +8,12 @@ name = "pypi"
 [dev-packages]
 pytest = "*"
 black = "*"
+ruff = "==0.4.2"
 
 [requires]
 python_version = "3.10"
+
+[scripts]
+test = "pytest ."
+format = "black ."
+lint = "ruff check . --fix"
