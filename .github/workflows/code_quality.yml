@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install Task
+        uses: arduino/setup-task@v2
       - name: Set up Python3.10
         uses: actions/setup-python@v5
         with:
@@ -14,17 +16,17 @@ jobs:
           cache: "pipenv"
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install --upgrade pipenv
-          pipenv install --dev
+          task install
       - name: Check format and smells
         run: |
-          pipenv run lint
+          task lint
 
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install Task
+        uses: arduino/setup-task@v2
       - name: Set up Python3.10
         uses: actions/setup-python@v5
         with:
@@ -32,9 +34,7 @@ jobs:
           cache: "pipenv"
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install --upgrade pipenv
-          pipenv install --dev
-      - name: run tests
+          task install
+      - name: Check format and smells
         run: |
-          pipenv run test
+          task lint
