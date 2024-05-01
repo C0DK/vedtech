@@ -35,6 +35,6 @@ jobs:
       - name: Install dependencies
         run: |
           task install
-      - name: Check format and smells
+      - name: Run tests
         run: |
-          task lint
+          task test
