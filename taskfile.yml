@@ -10,14 +10,17 @@ tasks:
   install:
     desc: installs pipenv and all packages in the pipfile
     cmds:
-      - python -m pip install --upgrade pip
-      - python -m pip install --upgrade pipenv
-      - pipenv install
+      - pipenv install -d
   format:
     desc: Auto formats the code and auto fixes smells
     cmds:
       - pipenv run black .
       - pipenv run ruff check . --fix
+  unsafe-format:
+    desc: Auto formats the code and auto fixes smells (even unsafe)
+    cmds:
+      - pipenv run black .
+      - pipenv run ruff check . --fix --unsafe-fixes
 
   lint:
     desc: Verify that all coding standards are followed
@@ -28,4 +31,4 @@ tasks:
   test:
     desc: Runs the complete test suite
     aliases: [tests]
-    cmd: pipenv run pytest .
+    cmd: pipenv run pytest . -vv

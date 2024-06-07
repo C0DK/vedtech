@@ -8,7 +8,7 @@ name = "pypi"
 [dev-packages]
 pytest = "*"
 black = "*"
-ruff = "==0.4.2"
+pytest-pretty = "*"
 
 [requires]
 python_version = "3.11"
