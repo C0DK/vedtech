@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from .document import Section, Document
+from .document import Document, Section
 
 
 @dataclass

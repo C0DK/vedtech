@@ -11,4 +11,3 @@ class Section:
 @dataclass
 class Document:
     sections: list[Section]
-
