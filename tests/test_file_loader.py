@@ -1,6 +1,12 @@
 import pytest
 
-from vedtech import parse_document, Document, Section
+from vedtech import (
+    parse_document,
+    Document,
+    Section,
+    DidNotStartWithHeadingError,
+    EmptyContentError,
+)
 from vedtech.domain.file_loader import extract_next_section
 
 
@@ -42,12 +48,12 @@ some other content
 
 
 def test_extract_next_section_fails_on_empty_string():
-    with pytest.raises(ValueError, match="is empty"):
+    with pytest.raises(EmptyContentError):
         extract_next_section("")
 
 
 def test_extract_next_section_fails_on_not_start_of_section():
-    with pytest.raises(ValueError, match="did not start with headin"):
+    with pytest.raises(DidNotStartWithHeadingError):
         extract_next_section("test\n# heading")
 
 

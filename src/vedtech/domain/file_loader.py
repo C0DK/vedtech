@@ -18,7 +18,7 @@ def extract_next_section(content: str) -> tuple[Section, str]:
         raise EmptyContentError
 
     if content[0] != "#":
-        raise DidNotStartWithHeadingError
+        raise DidNotStartWithHeadingError(content)
 
     size = 0
     while content[0] == "#":

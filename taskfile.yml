@@ -8,31 +8,35 @@ tasks:
       - task -l
     silent: true
   install:
-    desc: installs pipenv and all packages in the pipfile
+    desc: installs pdm and all packages in the pipfile
     cmds:
-      - pipenv install -d
+      - pdm install -d
   format:
     desc: Auto formats the code and auto fixes smells
     cmds:
-      - pipenv run black .
-      - pipenv run ruff check . --fix
+      - pdm run black .
+      - pdm run ruff check . --fix
   unsafe-format:
     desc: Auto formats the code and auto fixes smells (even unsafe)
     cmds:
-      - pipenv run black .
-      - pipenv run ruff check . --fix --unsafe-fixes
+      - pdm run black .
+      - pdm run ruff check . --fix --unsafe-fixes
 
   lint:
     desc: Verify that all coding standards are followed
     cmds:
-      - pipenv run black . --check
-      - pipenv run ruff check .
+      - pdm run black . --check
+      - pdm run ruff check .
 
   test:
     desc: Runs the complete test suite
     aliases: [tests]
-    cmd: pipenv run pytest . -vv
+    cmd: pdm run pytest . -vv
 
   build:
     desc: Builds the pypi package
-    cmd: pipenv run python -m build
+    cmd: pdm build
+
+  build:
+    desc: Publishes the pypi package
+    cmd: pdm publish
