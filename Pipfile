@@ -9,6 +9,9 @@ name = "pypi"
 pytest = "*"
 black = "*"
 pytest-pretty = "*"
+build = "*"
+setuptools = "*"
+vedtech = {editable = true, path = "."}
 
 [requires]
 python_version = "3.11"

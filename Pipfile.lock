@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6227d74542425e213c2095e7a2af80bb56e5b7e58a5dad2724674a92e7ebbfab"
+            "sha256": "3b670147642dc7315b70eeb0c15b643bdf87b91db5159f5bc4e0bbf30e63020f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -44,6 +44,14 @@
             ],
             "index": "pypi",
             "version": "==24.4.2"
+        },
+        "build": {
+            "hashes": [
+                "sha256:526263f4870c26f26c433545579475377b2b7588b6f1eac76a001e873ae3e19d",
+                "sha256:75e10f767a433d9a86e50d83f418e83efc18ede923ee5ff7df93b6cb0306c5d4"
+            ],
+            "index": "pypi",
+            "version": "==1.2.1"
         },
         "click": {
             "hashes": [
@@ -125,6 +133,14 @@
             "markers": "python_version >= '3.8'",
             "version": "==2.18.0"
         },
+        "pyproject-hooks": {
+            "hashes": [
+                "sha256:4b37730834edbd6bd37f26ece6b44802fb1c1ee2ece0e54ddff8bfc06db86965",
+                "sha256:7ceeefe9aec63a1064c18d939bdc3adf2d8aa1988a510afec15151578b232aa2"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==1.1.0"
+        },
         "pytest": {
             "hashes": [
                 "sha256:c434598117762e2bd304e526244f67bf66bbd7b5d6cf22138be51ff661980343",
@@ -148,6 +164,18 @@
             ],
             "markers": "python_full_version >= '3.7.0'",
             "version": "==13.7.1"
+        },
+        "setuptools": {
+            "hashes": [
+                "sha256:54faa7f2e8d2d11bcd2c07bed282eef1046b5c080d1c32add737d7b5817b1ad4",
+                "sha256:f211a66637b8fa059bb28183da127d4e86396c991a942b028c6650d4319c3fd0"
+            ],
+            "index": "pypi",
+            "version": "==70.0.0"
+        },
+        "vedtech": {
+            "editable": true,
+            "path": "."
         }
     }
 }

@@ -1,6 +1,6 @@
 import pytest
 
-from .document import Document, DocumentTemplate, Section, SectionTemplate
+from vedtech import Document, DocumentTemplate, Section, SectionTemplate
 
 
 @pytest.mark.parametrize(

@@ -1,7 +1,7 @@
 import pytest
 
-from .document import Document, Section
-from .file_loader import extract_next_section, parse_document
+from vedtech import parse_document, Document, Section
+from vedtech.domain.file_loader import extract_next_section
 
 
 def test_parse_document_empty():

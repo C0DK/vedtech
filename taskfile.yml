@@ -32,3 +32,7 @@ tasks:
     desc: Runs the complete test suite
     aliases: [tests]
     cmd: pipenv run pytest . -vv
+
+  build:
+    desc: Builds the pypi package
+    cmd: pipenv run python -m build
