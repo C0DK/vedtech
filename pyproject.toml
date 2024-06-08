@@ -16,6 +16,8 @@ name = "vedtech"
 readme = "README.md"
 requires-python = ">=3.11"
 version = "0.0.1"
+dependencies = [
+]
 
 [project.urls]
 Homepage = "https://github.com/C0DK/vedtech"
@@ -96,9 +98,11 @@ verify_ssl = true
 
 [tool.pdm.dev-dependencies]
 dev = [
-  "pytest",
-  "black",
-  "pytest-pretty",
-  "build",
-  "setuptools",
+    "pytest",
+    "black",
+    "pytest-pretty",
+    "build",
+    "setuptools",
+    "coverage>=7.5.3",
+    "pytest-cov>=5.0.0",
 ]

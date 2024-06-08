@@ -33,6 +33,11 @@ tasks:
     aliases: [tests]
     cmd: pdm run pytest . -vv
 
+  test-coverage:
+    desc: Runs the complete test suite
+    aliases: [tests]
+    cmd: pdm run pytest --cov=src .
+
   build:
     desc: Builds the pypi package
     cmd: pdm build
