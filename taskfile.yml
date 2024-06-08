@@ -37,6 +37,6 @@ tasks:
     desc: Builds the pypi package
     cmd: pdm build
 
-  build:
+  publish:
     desc: Publishes the pypi package
     cmd: pdm publish
