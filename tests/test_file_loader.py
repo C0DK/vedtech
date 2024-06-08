@@ -1,11 +1,10 @@
 import pytest
-
 from vedtech import (
-    parse_document,
-    Document,
-    Section,
     DidNotStartWithHeadingError,
+    Document,
     EmptyContentError,
+    Section,
+    parse_document,
 )
 from vedtech.domain.file_loader import extract_next_section
 

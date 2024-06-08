@@ -1,5 +1,4 @@
 import pytest
-
 from vedtech import Document, DocumentTemplate, Section, SectionTemplate
 
 
