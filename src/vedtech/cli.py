@@ -7,14 +7,7 @@ from vedtech import parse_document
 from vedtech.default_templates import Template
 
 
-class DocumentDidNotMatchTemplate(typer.Exit):
-    def __init__(self, path: str, template_name: str) -> None:
-        # TODO: dont do it like this.
-        print(f"[bold red]document '{path}' did not match template '{template_name}'![/bold red]")
-        super().__init__(code=1)
-
-
-app = typer.Typer()
+app = typer.Typer(pretty_exceptions_show_locals=False)
 
 
 @app.command()
@@ -24,14 +17,24 @@ def new(template: Template) -> str:
 
 
 @app.command()
-def check(path: str, template: Template) -> str:
-    with Path.open(path, encoding="utf-8") as document_file:
-        document = parse_document(document_file.read())
+def check(path: str, template: Template, verbose: bool = False) -> str:
+    try:
+        with Path.open(path, encoding="utf-8") as document_file:
+            document = parse_document(document_file.read())
+    except FileNotFoundError:
+        fail(f"No such file or directory: '{path}'")
+    except IsADirectoryError:
+        fail(f"You cannot check an entire folder (yet)")
 
     if not template.matches(document):
-        raise DocumentDidNotMatchTemplate(path, template.name)
+        fail(f"Document '{path}' did not match template '{template.value}'!")
 
-    return f"{path} matched template '{template.name}'!"
+    print(f":tada: '{path}' matched template '{template.value}'! :tada:")
+
+
+def fail(msg: str) -> None:
+    print(f"[bold red]Fail:[/bold red] {msg}")
+    raise typer.Exit(1)
 
 
 if __name__ == "__main__":
