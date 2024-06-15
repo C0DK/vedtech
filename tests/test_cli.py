@@ -1,20 +1,19 @@
-import pytest
 from typer.testing import CliRunner, Result
-from vedtech.default_templates import Template
 from vedtech.cli import (
     app,
-    Template,
 )
+from vedtech.default_templates import Template
 
 runner = CliRunner()
 
 
-def run_check(*args):
+def run_check(*args):  # noqa: ANN002
     return runner.invoke(app, ["check", *args])
 
 
 def assert_failed_with(msg: str, result: Result):
-    assert result.exit_code == 1 and msg in result.stdout
+    assert result.exit_code == 1
+    assert msg in result.stdout
 
 
 def assert_success(result: Result):

@@ -91,7 +91,7 @@ class Template(str, Enum):
             case Template.ADR_EDGEX:
                 return ADR_EDGEX_TEMPLATE
             case _:
-                raise NotImplementedError()
+                raise NotImplementedError
 
     def matches(self, document: Document) -> bool:
         return self.document_template.matches(document)
