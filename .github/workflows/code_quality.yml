@@ -1,4 +1,4 @@
-name: Verify Code Quality
+name: Quality Assurance
 
 on: [push]
 
