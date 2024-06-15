@@ -79,9 +79,19 @@ ADR_EDGEX_TEMPLATE = DocumentTemplate(
 )
 
 
-class Template(Enum):
-    ADR_NYGAARD = ADR_NYGAARD_TEMPLATE
-    ADR_EDGEX = ADR_EDGEX_TEMPLATE
+class Template(str, Enum):
+    ADR_NYGAARD = "adr_nygaard"
+    ADR_EDGEX = "adr_edgex"
+
+    @property
+    def document_template(self) -> DocumentTemplate:
+        match self:
+            case Template.ADR_NYGAARD:
+                return ADR_NYGAARD_TEMPLATE
+            case Template.ADR_EDGEX:
+                return ADR_EDGEX
+            case _:
+                raise NotImplementedError()
 
     def matches(self, document: Document) -> bool:
-        return self.value.matches(document)
+        return self.document_template.matches(document)

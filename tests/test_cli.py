@@ -1,6 +1,6 @@
 import pytest
 from vedtech.cli import (
-    CommandHandler,
+    check,
     DocumentDidNotMatchTemplate,
     PathWasDirectoryExit,
     Template,
@@ -9,16 +9,24 @@ from vedtech.cli import (
 
 def test_egdex_doesnot_match_template():
     with pytest.raises(DocumentDidNotMatchTemplate):
-        CommandHandler().check("tests/samples/edgex_example.md", Template.ADR_NYGAARD)
+        check("tests/samples/edgex_example.md", Template.ADR_NYGAARD)
 
 
 def test_nygaard_match_template():
-    assert "matched template" in CommandHandler().check(
+    assert "matched template" in check(
         "tests/samples/nygaard_example.md",
         Template.ADR_NYGAARD,
     )
 
 
 def test_throws_on_directory():
-    with pytest.raises(PathWasDirectoryExit):
-        CommandHandler().check("tests/samples/", Template.ADR_NYGAARD)
+    with pytest.raises(IsADirectoryError):
+        check("tests/samples/", Template.ADR_NYGAARD)
+
+
+def test_throws_on_non_file():
+    with pytest.raises(FileNotFoundError):
+        check("/aaadasdasdasdasda", Template.ADR_NYGAARD)
+
+
+# TODO: test on invalid files
