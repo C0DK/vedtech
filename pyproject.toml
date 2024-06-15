@@ -21,6 +21,9 @@ dependencies = [
     "typer[all]>=0.12.3",
 ]
 
+[project.scripts]
+vedtech = "src.vedtech.cli:app"
+
 [project.urls]
 Homepage = "https://github.com/C0DK/vedtech"
 Issues = "https://github.com/C0DK/vedtech/issues"

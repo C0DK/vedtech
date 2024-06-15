@@ -89,7 +89,7 @@ class Template(str, Enum):
             case Template.ADR_NYGAARD:
                 return ADR_NYGAARD_TEMPLATE
             case Template.ADR_EDGEX:
-                return ADR_EDGEX
+                return ADR_EDGEX_TEMPLATE
             case _:
                 raise NotImplementedError()
 
