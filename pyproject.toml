@@ -105,4 +105,5 @@ dev = [
     "setuptools",
     "coverage>=7.5.3",
     "pytest-cov>=5.0.0",
+    "ruff>=0.4.9",
 ]
