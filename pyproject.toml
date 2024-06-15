@@ -17,6 +17,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 version = "0.0.1"
 dependencies = [
+    "fire>=0.6.0",
 ]
 
 [project.urls]
@@ -106,4 +107,5 @@ dev = [
     "coverage>=7.5.3",
     "pytest-cov>=5.0.0",
     "ruff>=0.4.9",
+    # due to a bug in python-fire we need mock afaik?
 ]
