@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Annotated
 
 import typer
 from rich import print
@@ -16,19 +17,26 @@ def new() -> str:
 
 
 @app.command()
-def check(path: str, template: Template) -> str:
-    try:
-        with Path.open(path, encoding="utf-8") as document_file:
-            document = parse_document(document_file.read())
-    except FileNotFoundError:
-        fail(f"No such file or directory: '{path}'")
-    except IsADirectoryError:
-        fail("You cannot check an entire folder (yet)")
+def check(
+    document_file: Annotated[
+        Path,
+        typer.Argument(
+            exists=True,
+            dir_okay=False,
+            file_okay=True,
+            readable=True,
+            resolve_path=True,
+            allow_dash=True,
+        ),
+    ],
+    template: Template,
+) -> str:
+    document = parse_document(document_file.read_text())
 
     if not template.matches(document):
-        fail(f"Document '{path}' did not match template '{template.value}'!")
+        fail(f"Document '{document_file}' did not match template '{template.value}'!")
 
-    print(f":tada: '{path}' matched template '{template.value}'! :tada:")
+    print(f":tada: '{document_file}' matched template '{template.value}'! :tada:")
 
 
 def fail(msg: str) -> None:
