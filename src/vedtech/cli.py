@@ -36,7 +36,8 @@ def check(
         for root, dirs, files in os.walk(path):
             for file in files:
                 if file.endswith(".md"):
-                    verify(Path(file), template)
+                    # this fails-fast - we probably should let it do more files
+                    verify(Path(root) / file, template)
     else:
         verify(path, template)
 
