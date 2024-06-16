@@ -33,7 +33,7 @@ def check(
 ) -> str:
     if path.is_dir():
         # in python 3.12 we should use path.walk
-        for root, dirs, files in os.walk(path):
+        for root, _, files in os.walk(path):
             for file in files:
                 if file.endswith(".md"):
                     # this fails-fast - we probably should let it do more files
