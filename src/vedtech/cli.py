@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from typing import Annotated
 
@@ -18,11 +19,10 @@ def new() -> str:
 
 @app.command()
 def check(
-    document_file: Annotated[
+    path: Annotated[
         Path,
         typer.Argument(
             exists=True,
-            dir_okay=False,
             file_okay=True,
             readable=True,
             resolve_path=True,
@@ -31,6 +31,18 @@ def check(
     ],
     template: Template,
 ) -> str:
+    if path.is_dir():
+        # in python 3.12 we should use path.walk
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                if file.endswith(".md"):
+                    verify(Path(file), template)
+    else:
+        verify(path, template)
+
+
+def verify(document_file: Path, template: Template) -> None:
+
     document = parse_document(document_file.read_text())
 
     if not template.matches(document):
